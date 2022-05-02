@@ -2,10 +2,11 @@ import { gql } from 'apollo-server'
 
 export const typeDefs = gql`
   type Query {
-    toDo: String!
+    listToDos: String
   }
 
   type Mutation {
     login(email: String!): String!
+    toDo: String!
   }
 `
