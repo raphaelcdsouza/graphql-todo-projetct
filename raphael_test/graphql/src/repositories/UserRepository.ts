@@ -14,4 +14,8 @@ export class UserRepository {
   static async findUserByEmail ({ email }: { email: string }): Promise<UserInterface | null> {
     return await UserRepository.model.findOne({ email })
   }
+
+  static async findUserById ({ _id }: { _id: string }): Promise<UserInterface | null> {
+    return await UserRepository.model.findById(_id)
+  }
 }
