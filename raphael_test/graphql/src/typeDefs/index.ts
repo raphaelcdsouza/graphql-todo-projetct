@@ -3,7 +3,7 @@ import { gql } from 'apollo-server'
 export const typeDefs = gql`
   type ToDo {
     _id: String
-    name: String
+    title: String
     description: String
     category: String
     user: String
@@ -15,6 +15,6 @@ export const typeDefs = gql`
 
   type Mutation {
     login(email: String!): String!
-    createToDo: ToDo!
+    createToDo(title: String!, description: String!, category: String): ToDo!
   }
 `

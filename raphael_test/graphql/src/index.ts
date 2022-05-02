@@ -9,13 +9,10 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: ({ req }) => {
-    let token: string
+    let token: string | undefined
     if (req.headers.authorization) {
       token = req.headers.authorization.split(' ')[1]
-    } else {
-      token = ''
     }
-
     return { token }
   }
 })
