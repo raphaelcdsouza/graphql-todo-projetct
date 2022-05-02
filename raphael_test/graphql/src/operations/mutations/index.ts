@@ -8,7 +8,7 @@ const login = async (_: any, { email }: any): Promise<string> => {
   return `Bearer ${token}`
 }
 
-const toDo = async (_: any, __: any, context: any): Promise<string> => {
+const createToDo = async (_: any, __: any, context: any): Promise<string> => {
   const token = context.token
   const toDo = new ToDo({
     name: 'A fazer',
@@ -19,4 +19,4 @@ const toDo = async (_: any, __: any, context: any): Promise<string> => {
   return token
 }
 
-export const mutations = { toDo, login }
+export const mutations = { createToDo, login }
