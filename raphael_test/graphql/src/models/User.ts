@@ -1,6 +1,8 @@
 import { Schema, model } from 'mongoose'
+import { ObjectId } from 'mongodb'
 
 export interface UserInterface {
+  _id: ObjectId
   email: string
 }
 
