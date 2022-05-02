@@ -10,4 +10,8 @@ export class UserRepository {
     }
     return user
   }
+
+  static async findUser ({ email }: { email: string }): Promise<UserInterface | null> {
+    return await UserRepository.model.findOne({ email })
+  }
 }
