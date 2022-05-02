@@ -9,8 +9,14 @@ export const typeDefs = gql`
     user: String
   }
 
+  type Filters {
+    categories: [String]
+    title: String
+    description: String
+  }
+
   type Query {
-    listToDos: String
+    listToDos(categories: [String], title: String, description: String, email: String): [ToDo]
   }
 
   type Mutation {
