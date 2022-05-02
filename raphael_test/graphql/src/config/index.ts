@@ -3,6 +3,7 @@ export const config = {
     uri: process.env.MONGO_URI ?? ''
   },
   app: {
-    jwtSecret: process.env.JWT_SECRET ?? ''
+    jwtSecret: process.env.JWT_SECRET ?? '',
+    tokenExpiration: 60 * 60 * 60
   }
 }
