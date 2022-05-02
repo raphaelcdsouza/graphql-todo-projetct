@@ -1,5 +1,5 @@
 import { ApolloServer } from 'apollo-server'
-import { resolvers } from './resolvers'
+import { resolvers } from './operations/resolvers'
 import { typeDefs } from './typeDefs'
 import mongoose from 'mongoose'
 
