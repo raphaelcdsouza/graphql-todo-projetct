@@ -1,4 +1,12 @@
 import { Schema, model } from 'mongoose'
+import { ObjectId } from 'mongodb'
+export interface ToDoInterface {
+  _id: ObjectId
+  title: string
+  description: string
+  category: string
+  user: ObjectId
+}
 
 const ToDoSchema = new Schema({
   title: {
@@ -12,7 +20,11 @@ const ToDoSchema = new Schema({
   category: {
     type: String,
     required: true
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   }
 })
 
-export const ToDo = model('ToDo', ToDoSchema)
+export const ToDo = model<ToDoInterface>('ToDo', ToDoSchema)
