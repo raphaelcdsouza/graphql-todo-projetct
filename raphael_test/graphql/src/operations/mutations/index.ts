@@ -1,9 +1,15 @@
+import Joi from 'joi'
+
 import { createJWTToken, isAuthorized, verifyJWTToken } from '../../helpers'
 import { ToDoRepository, UserRepository } from '../../repositories'
 import { ToDoInterface } from '../../models'
 import { BadRequestError, UnauthorizedError } from '../../errors'
 
 const login = async (_: any, { email }: any): Promise<string> => {
+  const schema = Joi.object({
+    email: Joi.string().email()
+  })
+  await schema.validateAsync({ email })
   const user = await UserRepository.findOrCreateUser({ email })
   const token = createJWTToken(user.email)
   return `Bearer ${token}`
