@@ -41,4 +41,16 @@ const updateToDo = async (_: any, { id, title, description, category }: any, con
   return toDo
 }
 
-export const mutations = { login, createToDo, updateToDo }
+const deleteToDo = async (_: any, { id }: any, context: any): Promise<boolean> => {
+  const toDoFound = await ToDoRepository.findToDoById(id)
+  if (toDoFound === null) {
+    throw new BadRequestError('ToDo not found')
+  }
+  if (!(await isAuthorized(toDoFound.user.toString(), context.token))) {
+    throw new UnauthorizedError()
+  }
+  await ToDoRepository.deleteToDo(id)
+  return true
+}
+
+export const mutations = { login, createToDo, updateToDo, deleteToDo }

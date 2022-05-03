@@ -69,4 +69,8 @@ export class ToDoRepository {
     await this.model.updateOne({ _id: toDo._id }, updatedToDoObject).lean()
     return updatedToDoObject
   }
+
+  static async deleteToDo (id: string): Promise<void> {
+    await this.model.deleteOne({ _id: id })
+  }
 }

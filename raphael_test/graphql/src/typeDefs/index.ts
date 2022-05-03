@@ -29,5 +29,6 @@ export const typeDefs = gql`
     login(email: String!): String!
     createToDo(title: String!, description: String!, category: String): ToDo!
     updateToDo(id: String!, title: String, description: String, category: String): ToDo!
+    deleteToDo(id: String!): Boolean!
   }
 `
